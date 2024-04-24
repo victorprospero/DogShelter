@@ -1,6 +1,6 @@
 ﻿using DogShelter.Application;
-using DogShelter.Domain;
-using DogShelter.Infrastructure;
+using DogShelter.Domain.Models;
+using DogShelter.Infrastructure.Obsolete.Repositories;
 
 namespace DogShelter.Tests;
 
@@ -8,8 +8,8 @@ public class DogFilteringTests : IDisposable
 {
     private InMemoryDogRepository _sut;
     private DummyDogList _dummyDogList = new DummyDogList();
-    private List<Dog> _dogList = new List<Dog>();
-    private List<Dog?> result;
+    private List<DogModel> _dogList = new List<DogModel>();
+    private List<DogModel?> result;
 
     public DogFilteringTests()
     {
@@ -22,7 +22,7 @@ public class DogFilteringTests : IDisposable
     private  async void SetDogListInInMemoryList()
     {
         if (result is null)
-            result = new List<Dog?>();
+            result = new List<DogModel?>();
 
         foreach (var dog in _dogList)
             result.Add(await _sut.CreateAsync(dog));
