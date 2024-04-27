@@ -12,7 +12,7 @@ namespace DogShelter.API.V1.Controllers;
 [ApiController]
 [ApiVersion("1.0")]
 [Route("v{version:apiVersion}/[controller]/[action]")]
-public class DogController(ILogger logger, IMapper mapper, IMediator mediator) : DogShelterControllerBase(logger, mapper, mediator)
+public class DogController(ILogger<DogController> logger, IMapper mapper, IMediator mediator) : DogShelterControllerBase<DogController>(logger, mapper, mediator)
 {
     [HttpPost]
     public async Task SaveDog(DogApiModel model)
@@ -39,7 +39,7 @@ public class DogController(ILogger logger, IMapper mapper, IMediator mediator) :
         }
     }
     [HttpGet]
-    public async Task<IEnumerable<DogDetailsApiModel>> ListDogs(DogApiFilter filter)
+    public async Task<IEnumerable<DogDetailsApiModel>> ListDogs([ModelBinder] DogApiFilter filter)
     {
         try
         {
@@ -54,12 +54,12 @@ public class DogController(ILogger logger, IMapper mapper, IMediator mediator) :
         }
         }
     [HttpGet]
-    public async Task<IEnumerable<BreedApiModel>> ListBreeds(BreedApiFilter filter)
+    public async Task<IEnumerable<BreedApiModel>> ListBreeds(/*[ModelBinder] BreedApiFilter filter*/ string? name)
     {
         logger.LogInformation("Calling DogController.ListBreeds");
         try
         {
-            ListBreedsQuery query = mapper.Map<ListBreedsQuery>(filter);
+            ListBreedsQuery query = mapper.Map<ListBreedsQuery>(new BreedApiFilter() { Name = name ?? string.Empty });
             return mapper.Map<IEnumerable<BreedApiModel>>(await mediator.Send(query));
         } 
         catch (Exception ex)

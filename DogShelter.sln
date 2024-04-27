@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShelter.API", "DogShelter.API\DogShelter.API.csproj", "{2874F9F8-A047-4631-8A4C-A80FC0AA297C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.API", "DogShelter.API\DogShelter.API.csproj", "{2874F9F8-A047-4631-8A4C-A80FC0AA297C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShelter.Application", "DogShelter.Application\DogShelter.Application.csproj", "{9DF727C9-B56C-4815-8706-DF4922263BD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Application", "DogShelter.Application\DogShelter.Application.csproj", "{9DF727C9-B56C-4815-8706-DF4922263BD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShelter.Domain", "DogShelter.Domain\DogShelter.Domain.csproj", "{44E78DEB-C2DD-4316-B152-66190F4DBA7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Domain", "DogShelter.Domain\DogShelter.Domain.csproj", "{44E78DEB-C2DD-4316-B152-66190F4DBA7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShelter.Infrastructure", "DogShelter.Infrastructure\DogShelter.Infrastructure.csproj", "{8917E93A-22DF-4D2F-8B66-B30D419E0BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Infrastructure", "DogShelter.Infrastructure\DogShelter.Infrastructure.csproj", "{8917E93A-22DF-4D2F-8B66-B30D419E0BB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{628A9C58-06E2-46AE-AE7F-2B2CB2552189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShelter.Tests", "DogShelter.Tests\DogShelter.Tests.csproj", "{26E47FC9-2B7A-4252-9710-2BAE333F85B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Tests", "DogShelter.Tests\DogShelter.Tests.csproj", "{26E47FC9-2B7A-4252-9710-2BAE333F85B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
