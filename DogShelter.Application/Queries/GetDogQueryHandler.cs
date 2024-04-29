@@ -6,11 +6,11 @@ using MediatR;
 
 namespace DogShelter.Application.Queries
 {
-    public class GetDogQueryHandler(IDogRepository repository, IMapper mapper) : MediatrHandlerBase(repository, mapper), IRequestHandler<GetDogQuery, DogDetailsAppModel?>
+    public class GetDogQueryHandler(IDogShelterRepository repository, IMapper mapper) : MediatrHandlerBase(repository, mapper), IRequestHandler<GetDogQuery, DogAppModel?>
     {
-        public async Task<DogDetailsAppModel?> Handle(GetDogQuery request, CancellationToken cancellationToken)
+        public async Task<DogAppModel?> Handle(GetDogQuery request, CancellationToken cancellationToken)
         {
-            return mapper.Map<DogDetailsAppModel>(await repository.GetDogAsync(request.Id));
+            return mapper.Map<DogAppModel>(await repository.GetDogAsync(request.Id));
         }
     }
 }

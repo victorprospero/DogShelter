@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DogShelter.Application.Queries
 {
-    public class ListBreedsQuery : IRequest<IEnumerable<BreedAppModel>?>
+    public class GetBreedQuery : IRequest<BreedAppModel?>
     {
         public string? Name { get; set; }
     }

@@ -4,6 +4,6 @@
     {
         public ulong? Id { get; set; }
         public string? Name { get; set; }
-        public string? Breed { get; set; }
+        public BreedAppModel? Breed { get; set; }
     }
 }

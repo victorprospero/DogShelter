@@ -4,11 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DogShelter.Infrastructure.Contexts
 {
-    public class DogShelterContext : DbContext
+    public class DogShelterContext(DbContextOptions options) : DbContext(options)
     {
-        public DogShelterContext(DbContextOptions options) : base(options)
-        {
-        }
+        public DbSet<Breed> Breeds { get; set; }
         public DbSet<Dog> Dogs { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,6 +15,7 @@ namespace DogShelter.Infrastructure.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new BreedConfig());
             modelBuilder.ApplyConfiguration(new DogConfig());
         }
     }

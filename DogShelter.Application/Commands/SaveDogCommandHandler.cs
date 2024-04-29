@@ -6,7 +6,7 @@ using MediatR;
 
 namespace DogShelter.Application.Commands
 {
-    public class SaveDogCommandHandler(IDogRepository repository, IMapper mapper) : MediatrHandlerBase(repository, mapper), INotificationHandler<SaveDogCommand>
+    public class SaveDogCommandHandler(IDogShelterRepository repository, IMapper mapper) : MediatrHandlerBase(repository, mapper), INotificationHandler<SaveDogCommand>
     {
         public async Task Handle(SaveDogCommand notification, CancellationToken cancellationToken)
         {

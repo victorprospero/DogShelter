@@ -2,8 +2,9 @@
 {
     public class DogFilter
     {
-        public ulong? Id { get; set; }
-        public string? Name { get; set; }
-        public string? Breed { get; set; }
+        public ulong? DogId { get; set; }
+        public string? DogName { get; set; }
+        public uint ? BreedId { get; set; }
+        public string? BreedName { get; set; }
     }
 }

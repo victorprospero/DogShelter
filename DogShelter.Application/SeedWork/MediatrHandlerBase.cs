@@ -3,9 +3,9 @@ using DogShelter.Domain;
 
 namespace DogShelter.Application.SeedWork
 {
-    public class MediatrHandlerBase(IDogRepository repository, IMapper mapper)
+    public class MediatrHandlerBase(IDogShelterRepository repository, IMapper mapper)
     {
-        protected readonly IDogRepository repository = repository;
+        protected readonly IDogShelterRepository repository = repository;
         protected readonly IMapper mapper = mapper;
     }
 }

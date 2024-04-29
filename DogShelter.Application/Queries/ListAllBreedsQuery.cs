@@ -3,8 +3,7 @@ using MediatR;
 
 namespace DogShelter.Application.Queries
 {
-    public class GetDogQuery : IRequest<DogAppModel?>
+    public class ListAllBreedsQuery : IRequest<IEnumerable<BreedAppModel>?>
     {
-        public ulong Id { get; set; }
     }
 }

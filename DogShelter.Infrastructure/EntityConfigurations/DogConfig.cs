@@ -1,5 +1,6 @@
 ﻿using DogShelter.Domain.Entities;
 using DogShelter.Infrastructure.SeedWork;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DogShelter.Infrastructure.EntityConfigurations
@@ -10,11 +11,13 @@ namespace DogShelter.Infrastructure.EntityConfigurations
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
-            builder.Property(e => e.Name).HasMaxLength(64);
-            builder.Property(e => e.Breed).HasMaxLength(64);
-            builder.Property(e => e.Temperament).HasMaxLength(64);
-            builder.Property(e => e.MinHeight).IsRequired();
-            builder.Property(e => e.MinHeight).IsRequired();
+            builder.Property(e => e.Name).IsRequired().HasMaxLength(64);
+            builder.Property(e => e.BreedId);
+            builder.HasOne(e => e.Breed)
+                .WithMany(e => e.Dogs)
+                .HasForeignKey(e => e.BreedId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.Configure(builder);
         }
     }

@@ -7,7 +7,7 @@ namespace DogShelter.Infrastructure
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<DogRepository>().AsImplementedInterfaces();
+            builder.RegisterType<DogShelterRepository>().AsImplementedInterfaces();
             base.Load(builder);
         }
     }
