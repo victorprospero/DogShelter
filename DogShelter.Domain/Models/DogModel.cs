@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace DogShelter.Domain.Models;
+﻿namespace DogShelter.Domain.Models;
 public class DogModel
 {
     public ulong? Id { get; set; }

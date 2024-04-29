@@ -10,6 +10,7 @@ using Serilog;
 using System.Reflection;
 using MediatR.Extensions.Autofac.DependencyInjection.Builder;
 using Microsoft.EntityFrameworkCore;
+using DogShelter.API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

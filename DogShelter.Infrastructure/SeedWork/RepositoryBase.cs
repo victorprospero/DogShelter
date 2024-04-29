@@ -40,7 +40,7 @@ namespace DogShelter.Infrastructure.SeedWork
         {
             if (TObject is IEntityCanCreate)
             {
-                IEntityCanCreate model = TObject as IEntityCanCreate;
+                IEntityCanCreate? model = TObject as IEntityCanCreate;
                 model.CreatedOn = DateTime.UtcNow;
             }
             SetUpdateInfo(TObject);
@@ -50,7 +50,7 @@ namespace DogShelter.Infrastructure.SeedWork
         {
             if (TObject is IEntityCanUpdate)
             {
-                IEntityCanUpdate model = TObject as IEntityCanUpdate;
+                IEntityCanUpdate? model = TObject as IEntityCanUpdate;
                 model.LastUpdated = DateTime.UtcNow;
             }
             return TObject;

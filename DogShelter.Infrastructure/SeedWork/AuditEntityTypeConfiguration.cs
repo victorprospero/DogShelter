@@ -8,12 +8,9 @@ namespace DogShelter.Infrastructure.SeedWork
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
-            builder.Property(e => e.CreatedOn)
-                .HasField("CREATEDON")
-                .IsRequired();
+            builder.Property(e => e.CreatedOn).IsRequired();
 
-            builder.Property(e => e.LastUpdated)
-                .HasField("LASTUPDATED");
+            builder.Property(e => e.LastUpdated);
         }
     }
 }
