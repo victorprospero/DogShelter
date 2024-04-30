@@ -8,8 +8,8 @@ using DogShelter.Application.Models;
 using DogShelter.Application.Queries;
 using FluentValidation.Results;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace DogShelter.API.V1.Controllers;
 
@@ -17,33 +17,39 @@ namespace DogShelter.API.V1.Controllers;
 [ApiController]
 [ApiVersion("1.0")]
 [Route("v{version:apiVersion}/[controller]/[action]")]
+[Authorize]
 public class DogShelterController(ILogger<DogShelterController> logger, IMapper mapper, IMediator mediator) : DogShelterControllerBase<DogShelterController>(logger, mapper, mediator)
 {
     [HttpDelete]
+    [Authorize(Roles = "Write")]
     public Task DeleteDog(ulong dogId)
     {
         return mediator.Publish(new DeleteDogCommand() { DogId = dogId });
     }
 
     [HttpGet]
+    [Authorize(Roles = "Read")]
     public async Task<DogApiModel> GetDog(ulong dogId)
     {
         return mapper.Map<DogApiModel>(await mediator.Send(new GetDogQuery() { Id = dogId }));
     }
 
     [HttpGet]
+    [Authorize(Roles = "Read")]
     public async Task<IEnumerable<BreedApiModel>> ListAllBreeds()
     {
         return mapper.Map<IEnumerable<BreedApiModel>>(await mediator.Send(new ListAllBreedsQuery()));
     }
 
     [HttpGet]
+    [Authorize(Roles = "Read")]
     public async Task<IEnumerable<DogApiModel>> ListDogs([FromQuery] DogApiFilter filter)
     {
         return mapper.Map<IEnumerable<DogApiModel>>(await mediator.Send(mapper.Map<ListDogsQuery>(filter)));
     }
     
     [HttpPost]
+    [Authorize(Roles = "Write")]
     public async Task<ValidationApiModel> SaveDog([FromBody] SavingDogVO dog)
     {
         ValidationResult validationResult = await new SavingDogVOValidator().ValidateAsync(dog);

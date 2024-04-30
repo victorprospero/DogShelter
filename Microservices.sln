@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DogShelter", "DogShelter", "{5D445B3B-787E-4D0D-A18D-906C99A33622}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authenticator", "Authenticator", "{174ED436-7389-4585-9A5A-015602EE0344}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Domain", "DogShelter\DogShelter.Domain\DogShelter.Domain.csproj", "{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Infrastructure", "DogShelter\DogShelter.Infrastructure\DogShelter.Infrastructure.csproj", "{F851A6F1-E2A5-4124-A807-E5A32D5B6B95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Application", "DogShelter\DogShelter.Application\DogShelter.Application.csproj", "{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.API", "DogShelter\DogShelter.API\DogShelter.API.csproj", "{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Tests", "DogShelter\DogShelter.Tests\DogShelter.Tests.csproj", "{AE4B0097-6474-40D9-834E-227D1DFA6DD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Domain", "Authenticator\Authenticator.Domain\Authenticator.Domain.csproj", "{532057A2-5666-49CD-BAAB-2B8D210AD2D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Infrastructure", "Authenticator\Authenticator.Infrastructure\Authenticator.Infrastructure.csproj", "{31E46DAC-0B83-445C-AC96-7A1B448E3006}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Application", "Authenticator\Authenticator.Application\Authenticator.Application.csproj", "{56F454D7-5D55-413C-9474-673442EED94F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.API", "Authenticator\Authenticator.API\Authenticator.API.csproj", "{A860DCD1-E26D-493F-B01E-EEC2C566E919}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F851A6F1-E2A5-4124-A807-E5A32D5B6B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F851A6F1-E2A5-4124-A807-E5A32D5B6B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F851A6F1-E2A5-4124-A807-E5A32D5B6B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F851A6F1-E2A5-4124-A807-E5A32D5B6B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4B0097-6474-40D9-834E-227D1DFA6DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4B0097-6474-40D9-834E-227D1DFA6DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4B0097-6474-40D9-834E-227D1DFA6DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4B0097-6474-40D9-834E-227D1DFA6DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{532057A2-5666-49CD-BAAB-2B8D210AD2D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{532057A2-5666-49CD-BAAB-2B8D210AD2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{532057A2-5666-49CD-BAAB-2B8D210AD2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{532057A2-5666-49CD-BAAB-2B8D210AD2D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E46DAC-0B83-445C-AC96-7A1B448E3006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E46DAC-0B83-445C-AC96-7A1B448E3006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E46DAC-0B83-445C-AC96-7A1B448E3006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E46DAC-0B83-445C-AC96-7A1B448E3006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F454D7-5D55-413C-9474-673442EED94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F454D7-5D55-413C-9474-673442EED94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F454D7-5D55-413C-9474-673442EED94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F454D7-5D55-413C-9474-673442EED94F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A860DCD1-E26D-493F-B01E-EEC2C566E919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A860DCD1-E26D-493F-B01E-EEC2C566E919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A860DCD1-E26D-493F-B01E-EEC2C566E919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A860DCD1-E26D-493F-B01E-EEC2C566E919}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F77E89E0-08FA-429F-80FC-84A4F0DCEA4F} = {5D445B3B-787E-4D0D-A18D-906C99A33622}
+		{F851A6F1-E2A5-4124-A807-E5A32D5B6B95} = {5D445B3B-787E-4D0D-A18D-906C99A33622}
+		{DB25304D-DBD9-4C34-9F1F-FBE67C2AA3A0} = {5D445B3B-787E-4D0D-A18D-906C99A33622}
+		{DC4D2409-0C95-4278-A6C7-ED80CA33A6BD} = {5D445B3B-787E-4D0D-A18D-906C99A33622}
+		{AE4B0097-6474-40D9-834E-227D1DFA6DD9} = {5D445B3B-787E-4D0D-A18D-906C99A33622}
+		{532057A2-5666-49CD-BAAB-2B8D210AD2D1} = {174ED436-7389-4585-9A5A-015602EE0344}
+		{31E46DAC-0B83-445C-AC96-7A1B448E3006} = {174ED436-7389-4585-9A5A-015602EE0344}
+		{56F454D7-5D55-413C-9474-673442EED94F} = {174ED436-7389-4585-9A5A-015602EE0344}
+		{A860DCD1-E26D-493F-B01E-EEC2C566E919} = {174ED436-7389-4585-9A5A-015602EE0344}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF8F3738-2902-4327-8D9C-57E9AD996A90}
+	EndGlobalSection
+EndGlobal

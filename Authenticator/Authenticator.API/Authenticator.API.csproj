@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,21 +9,19 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.0.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="8.0.0" />
-    <PackageReference Include="FluentValidation" Version="11.9.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DogShelter.Application\DogShelter.Application.csproj" />
-    <ProjectReference Include="..\DogShelter.Domain\DogShelter.Domain.csproj" />
-    <ProjectReference Include="..\DogShelter.Infrastructure\DogShelter.Infrastructure.csproj" />
+    <ProjectReference Include="..\Authenticator.Application\Authenticator.Application.csproj" />
+    <ProjectReference Include="..\Authenticator.Domain\Authenticator.Domain.csproj" />
+    <ProjectReference Include="..\Authenticator.Infrastructure\Authenticator.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

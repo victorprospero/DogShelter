@@ -14,6 +14,8 @@ namespace DogShelter.Infrastructure.EntityConfigurations
             builder.Property(e => e.Temperament).HasMaxLength(64);
             builder.Property(e => e.MinHeight).IsRequired();
             builder.Property(e => e.MinHeight).IsRequired();
+
+            builder.HasIndex(e => e.Name).IsUnique();
         }
     }
 }
