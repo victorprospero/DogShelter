@@ -1,7 +1,6 @@
 ﻿using Authenticator.Application.Models;
 using Authenticator.Application.SeedWork;
 using Authenticator.Domain;
-using Authenticator.Domain.Models;
 using AutoMapper;
 using MediatR;
 
@@ -11,8 +10,7 @@ namespace Authenticator.Application.Queries
     {
         public async Task<IEnumerable<UserAppModel>?> Handle(ListUsersQuery request, CancellationToken cancellationToken)
         {
-            IEnumerable<UserModel> result = await repository.ListUsersAsync();
-            return mapper.Map<IEnumerable<UserAppModel>>(result);
+            return mapper.Map<IEnumerable<UserAppModel>>(await repository.ListUsersAsync());
         }
     }
 }

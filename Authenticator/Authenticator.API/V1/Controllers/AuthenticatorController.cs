@@ -1,3 +1,4 @@
+using Authenticator.API.V1.Models;
 using Authenticator.Application.Commands;
 using Authenticator.Application.Models;
 using Authenticator.Application.Queries;
@@ -20,14 +21,13 @@ namespace Authenticator.API.V1.Controllers
         private readonly IConfiguration configuration = configuration;
         
         [HttpGet]
-        public async Task<object> GetToken(string email, string password)
+        public async Task<ValidationApiModel> GetToken(string eMail, string password)
         {
-            string result = "OK", stringToken = "";
-            IEnumerable<UserAppModel>? users = await mediator.Send(new ListUsersQuery());
-            UserAppModel user = users?.FirstOrDefault(x => x.Email == email);
+            UserAppModel? user = await mediator.Send(new GetUserQuery() { Email = eMail, Password = password });
+            ValidationApiModel validation = new();
             if (user == null)
             {
-                result = "NotFound";
+                validation.Messages = ["E-Mail / Password not found."];
             }
             else
             {
@@ -48,9 +48,9 @@ namespace Authenticator.API.V1.Controllers
                     Subject = ci
                 };
                 SecurityToken token = handler.CreateToken(tokenDescriptor);
-                stringToken = handler.WriteToken(token);
+                validation.Token = handler.WriteToken(token);
             }
-            return new { result, token = stringToken };
+            return validation;
         }
 
         [HttpGet]

@@ -10,64 +10,45 @@ namespace Authenticator.Infrastructure.Repositories
 {
     public class AuthenticatorRepository(AuthenticatorContext dbContext, IDataProtectionProvider dataProtectionProvider) : IAuthenticatorRepository
     {
-        private readonly IDataProtectionProvider dataProtectionProvider = dataProtectionProvider;
+        private readonly IDataProtector passwordProtector = dataProtectionProvider.CreateProtector("User Password");
         private readonly AuthenticatorContext dbContext = dbContext;
         public async Task CreateSampleDatabaseAsync()
         {
-            RoleModel[] roles = [
-                new RoleModel { Name = "Read" }, 
-                new RoleModel { Name = "Write" }
-            ];
-
-            UserModel[] users = [
-                new UserModel{
-                    Email = "victorprospero@hotmail.com",
-                    Password = "12345",
-                    Roles = [roles[0], roles[1]]
-                },
-                new UserModel{
-                    Email = "miguel.carvalo@gmail.com",
-                    Password = "67890",
-                    Roles = [roles[0]]
-                },
-            ];
-            foreach (var role in roles)
-            {
-                await AddRole(role);
-            }
-            foreach (var user in users)
-            {
-                await AddUser(user);
-                foreach (var role in user.Roles ?? [])
-                {
-                    await GrantAccess(user.Email, role.Id);
-                }
-            }
+            User[] users = [await AddUser(new UserModel() { Email = "victorprospero@hotmail.com", Password = "12345"}),
+                            await AddUser(new UserModel() { Email = "miguel.carvalho@gmail.com", Password = "67890"})];
+            Role[] roles = [await AddRole(new RoleModel() { Name = "Read" }),
+                            await AddRole(new RoleModel() { Name = "Write" })];
+            await GrantAccess(users[0], roles[0]);
+            await GrantAccess(users[0], roles[1]);
+            await GrantAccess(users[1], roles[0]);
+            await dbContext.SaveChangesAsync();
         }
 
-        private async Task AddUser(UserModel user)
+        private async Task<User> AddUser(UserModel user)
         {
             User newUser = dbContext.CreateProxy<User>();
-            newUser.Email = user.Email;
-            var protector = dataProtectionProvider.CreateProtector(string.Empty);
-            newUser.Password = protector.Protect(user.Password ?? string.Empty);
+            newUser.Email = user.Email ?? string.Empty;
+            newUser.Password = passwordProtector.Protect(user.Password ?? string.Empty);
             await dbContext.Users.AddAsync(newUser);
+            return newUser;
         }
 
-        private async Task<RoleModel> AddRole(RoleModel role)
+        private async Task<Role> AddRole(RoleModel role)
         {
             Role newRole = dbContext.CreateProxy<Role>();
             newRole.Name = role.Name ?? string.Empty;
             await dbContext.Roles.AddAsync(newRole);
             role.Id = newRole.Id;
-            return role;
+            return newRole;
         }
 
-        private async Task GrantAccess(string? eMail, uint? roleId)
+        private async Task GrantAccess(User user, Role role)
         {
             UserRole grant = dbContext.CreateProxy<UserRole>();
-            grant.Email = eMail ?? string.Empty;
-            grant.RoleId = roleId ?? 0;
+            grant.Email = user.Email;
+            grant.User = user;
+            grant.RoleId = role.Id;
+            grant.Role = role;
             await dbContext.UsersRoles.AddAsync(grant);
         }
 
@@ -85,6 +66,27 @@ namespace Authenticator.Infrastructure.Repositories
                                            Name = b.Role.Name
                                        })
                           }).ToListAsync();
+        }
+        public async Task<UserModel?> GetUserAsync(string eMail, string password)
+        {
+            UserModel? user = await (from a in dbContext.Users.AsExpandable()
+                              where a.Email == eMail
+                              select new UserModel()
+                              {
+                                  Email = a.Email,
+                                  Password = a.Password,
+                                  Roles = (from b in a.Roles
+                                           select new RoleModel()
+                                           {
+                                               Id = b.RoleId,
+                                               Name = b.Role.Name
+                                           })
+                              }).FirstOrDefaultAsync();
+            if (user != null && passwordProtector.Unprotect(user.Password) == password)
+            {
+                return user;
+            }
+            return null;
         }
     }
 }

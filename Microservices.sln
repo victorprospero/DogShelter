@@ -17,13 +17,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.API", "DogShelte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogShelter.Tests", "DogShelter\DogShelter.Tests\DogShelter.Tests.csproj", "{AE4B0097-6474-40D9-834E-227D1DFA6DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Domain", "Authenticator\Authenticator.Domain\Authenticator.Domain.csproj", "{532057A2-5666-49CD-BAAB-2B8D210AD2D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticator.Domain", "Authenticator\Authenticator.Domain\Authenticator.Domain.csproj", "{532057A2-5666-49CD-BAAB-2B8D210AD2D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Infrastructure", "Authenticator\Authenticator.Infrastructure\Authenticator.Infrastructure.csproj", "{31E46DAC-0B83-445C-AC96-7A1B448E3006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticator.Infrastructure", "Authenticator\Authenticator.Infrastructure\Authenticator.Infrastructure.csproj", "{31E46DAC-0B83-445C-AC96-7A1B448E3006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.Application", "Authenticator\Authenticator.Application\Authenticator.Application.csproj", "{56F454D7-5D55-413C-9474-673442EED94F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticator.Application", "Authenticator\Authenticator.Application\Authenticator.Application.csproj", "{56F454D7-5D55-413C-9474-673442EED94F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator.API", "Authenticator\Authenticator.API\Authenticator.API.csproj", "{A860DCD1-E26D-493F-B01E-EEC2C566E919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticator.API", "Authenticator\Authenticator.API\Authenticator.API.csproj", "{A860DCD1-E26D-493F-B01E-EEC2C566E919}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{849D7376-966F-4FB7-A93C-8FA3C289EE13}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

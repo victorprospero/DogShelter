@@ -6,5 +6,6 @@ namespace Authenticator.Domain
     {
         Task CreateSampleDatabaseAsync();
         Task<IEnumerable<UserModel>> ListUsersAsync();
+        Task<UserModel?> GetUserAsync(string eMail, string password);
     }
 }

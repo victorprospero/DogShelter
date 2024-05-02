@@ -12,11 +12,11 @@ namespace DogShelter.Application.Queries
 {
     public class ListAllBreedsQueryHandler(IDogShelterRepository repository, IMapper mapper, IConfiguration configuration) : MediatrHandlerBase(repository, mapper), IRequestHandler<ListAllBreedsQuery, IEnumerable<BreedAppModel>?>
     {
-        private readonly RestClient client = new(configuration.GetValue<string>("DogBreedApiBaseUrl") ?? string.Empty);
+        private readonly RestClient client = new(configuration.GetValue<string>("DogBreedApi:BaseUrl") ?? string.Empty);
 
         public async Task<IEnumerable<BreedAppModel>?> Handle(ListAllBreedsQuery request, CancellationToken cancellationToken)
         {
-            RestRequest restRequest = new(configuration.GetValue<string>("DogBreedApiSearchMethod") ?? string.Empty, Method.Get);
+            RestRequest restRequest = new(configuration.GetValue<string>("DogBreedApi:SearchMethod") ?? string.Empty, Method.Get);
             //restRequest.AddObject(new BreedsApiRequestParameters()); This is the correct way, but didn´t worked
             BreedsApiRequestParameters parameters = new BreedsApiRequestParameters();
             foreach (PropertyInfo property in parameters.GetType().GetProperties())
