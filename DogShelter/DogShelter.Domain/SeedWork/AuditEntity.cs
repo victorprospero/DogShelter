@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DogShelter.Domain.SeedWork
+﻿namespace DogShelter.Domain.SeedWork
 {
     public class AuditEntity : EntityBase, IEntityCanCreate, IEntityCanUpdate
     {
         public DateTime CreatedOn { get; set; }
-        public DateTime? LastUpdated { get; set; }
+        public string CreatedBy { get; set; } = string.Empty;
+        public DateTime? LastUpdateOn { get; set; }
+        public string? LastUpdateBy { get; set; }
     }
 }

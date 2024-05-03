@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Autofac.Core;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,6 +75,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 builder.Services.AddAuthorization();
+builder.Services.AddHttpContextAccessor();
 
 builder.Host.UseSerilog();
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
@@ -84,7 +87,9 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterAutoMapper(Assembly.GetExecutingAssembly());
     containerBuilder.RegisterModule<DogShelterApplicationModule>();
     containerBuilder.RegisterModule<DogShelterInfrastructureModule>();
-    containerBuilder.RegisterType<DogShelterContext>().WithParameter("options", new DbContextOptionsBuilder<DogShelterContext>().UseInMemoryDatabase("DogShelter").Options).InstancePerLifetimeScope();
+    containerBuilder.RegisterType<DogShelterContext>()
+        .WithParameter("options", new DbContextOptionsBuilder<DogShelterContext>().UseInMemoryDatabase("DogShelter").Options)
+        .InstancePerLifetimeScope();
 });
 
 var app = builder.Build();

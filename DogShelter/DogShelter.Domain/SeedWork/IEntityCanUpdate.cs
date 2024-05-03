@@ -2,6 +2,7 @@
 {
     public interface IEntityCanUpdate
     {
-        public DateTime? LastUpdated { get; set; }
+        public DateTime? LastUpdateOn { get; set; }
+        public string? LastUpdateBy { get; set; }
     }
 }

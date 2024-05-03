@@ -9,8 +9,9 @@ namespace DogShelter.Infrastructure.SeedWork
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.Property(e => e.CreatedOn).IsRequired();
-
-            builder.Property(e => e.LastUpdated);
+            builder.Property(e => e.CreatedBy).IsRequired();
+            builder.Property(e => e.LastUpdateOn);
+            builder.Property(e => e.LastUpdateBy);
         }
     }
 }

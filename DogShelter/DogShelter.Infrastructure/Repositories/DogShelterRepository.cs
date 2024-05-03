@@ -5,27 +5,28 @@ using DogShelter.Domain.ValueObjects;
 using DogShelter.Infrastructure.Contexts;
 using DogShelter.Infrastructure.SeedWork;
 using LinqKit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace DogShelter.Infrastructure.Repositories
 {
-    public class DogShelterRepository(DogShelterContext dbContext) : RepositoryBase(dbContext), IDogShelterRepository
+    public class DogShelterRepository(DogShelterContext dbContext, IHttpContextAccessor httpContext) : RepositoryBase(dbContext, httpContext), IDogShelterRepository
     {
-        private readonly DogShelterContext dbContext = dbContext;
+        private readonly DogShelterContext dogShelterContext = dbContext;
         
         public async Task DeleteDogAsync(ulong id)
         {
-            Dog? dog = await dbContext.Dogs.FirstOrDefaultAsync(d => d.Id == id);
+            Dog? dog = await dogShelterContext.Dogs.FirstOrDefaultAsync(d => d.Id == id);
             if (dog != null)
             {
-                dbContext.Dogs.Remove(dog);
+                dogShelterContext.Dogs.Remove(dog);
                 await base.SaveChangesAsync();
             }
         }
         public Task<DogModel?> GetDogAsync(ulong id)
         {
-            return (from a in dbContext.Dogs
-                    join b in dbContext.Breeds on a.BreedId equals b.Id into bb
+            return (from a in dogShelterContext.Dogs
+                    join b in dogShelterContext.Breeds on a.BreedId equals b.Id into bb
                     from b in bb
                     where a.Id == id
                     select new DogModel()
@@ -50,7 +51,7 @@ namespace DogShelter.Infrastructure.Repositories
             {
                 predicate = predicate.And(x => x.Name != null && x.Name.IndexOf(filter.Name) > -1);
             }
-            return await (from a in dbContext.Breeds.Where(predicate)
+            return await (from a in dogShelterContext.Breeds.Where(predicate)
                           select new BreedModel()
                           {
                               Id = a.Id,
@@ -82,8 +83,8 @@ namespace DogShelter.Infrastructure.Repositories
                 predicateBreed = predicateBreed.And(x => x.Name != null && x.Name.IndexOf(filter.BreedName) > -1);
             }
 
-            return await (from a in dbContext.Dogs.Where(predicateDog)
-                          join b in dbContext.Breeds.Where(predicateBreed) on a.BreedId equals b.Id into bb
+            return await (from a in dogShelterContext.Dogs.Where(predicateDog)
+                          join b in dogShelterContext.Breeds.Where(predicateBreed) on a.BreedId equals b.Id into bb
                           from b in bb
                           select new DogModel()
                           {
@@ -93,7 +94,7 @@ namespace DogShelter.Infrastructure.Repositories
         }
         public async Task SaveBreedAsync(BreedModel model)
         {
-            Breed? breed = await dbContext.Breeds.FirstOrDefaultAsync(b => b.Id == model.Id);
+            Breed? breed = await dogShelterContext.Breeds.FirstOrDefaultAsync(b => b.Id == model.Id);
             if (breed == null)
             {
                 breed = base.New<Breed>();
@@ -115,7 +116,7 @@ namespace DogShelter.Infrastructure.Repositories
             Dog? dog = null;
             if (model.Id.HasValue) 
             {
-                dog = await dbContext.Dogs.FirstOrDefaultAsync(d => d.Id == model.Id);
+                dog = await dogShelterContext.Dogs.FirstOrDefaultAsync(d => d.Id == model.Id);
             }
             if (dog == null)
             {

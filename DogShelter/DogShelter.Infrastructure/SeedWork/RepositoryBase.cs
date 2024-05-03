@@ -1,12 +1,15 @@
 ﻿using DogShelter.Domain.SeedWork;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace DogShelter.Infrastructure.SeedWork
 {
-    public abstract class RepositoryBase(DbContext dbContext)
+    public abstract class RepositoryBase(DbContext dbContext, IHttpContextAccessor httpContext)
     {
         protected DbContext DbContext { get; } = dbContext;
-        
+        protected IIdentity? Identity { get; } = httpContext.HttpContext.User.Identity;
+
         protected T New<T>() where T : class
         {
             return DbContext.CreateProxy<T>();
@@ -34,6 +37,7 @@ namespace DogShelter.Infrastructure.SeedWork
             if (TObject is IEntityCanCreate model)
             {
                 model.CreatedOn = DateTime.UtcNow;
+                model.CreatedBy = Identity?.Name ?? string.Empty;
             }
             SetUpdateInfo(TObject);
         }
@@ -41,7 +45,8 @@ namespace DogShelter.Infrastructure.SeedWork
         {
             if (TObject is IEntityCanUpdate model)
             {
-                model.LastUpdated = DateTime.UtcNow;
+                model.LastUpdateOn = DateTime.UtcNow;
+                model.LastUpdateBy = Identity?.Name ?? string.Empty;
             }
         }
         #endregion
